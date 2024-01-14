@@ -14,5 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $nombre = "Nacho";
+    return view('inicio')->with('nombre', $nombre);
+})->name('inicio');
+
+Route::get('listado', function() {
+    $libros = array(
+    array("titulo" => "El juego de Ender",
+    "autor" => "Orson Scott Card"),
+    array("titulo" => "La tabla de Flandes",
+    "autor" => "Arturo Pérez Reverte"),
+    array("titulo" => "La historia interminable",
+    "autor" => "Michael Ende"),
+    array("titulo" => "El Señor de los Anillos",
+    "autor" => "J.R.R. Tolkien")
+    );
+    return view('libros.listado', compact('libros'));
+})->name('listado_libros');
