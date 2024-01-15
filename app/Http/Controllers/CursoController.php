@@ -38,7 +38,12 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $curso = new Curso();
+        $curso->nombre = $request->get('nombre');
+        $curso->curso = $request->get('curso');
+        $curso->save();
+
+        return redirect()->route('cursos.index');
     }
 
     /**
