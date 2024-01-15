@@ -9,5 +9,5 @@
     <li>Curso/s: {{ $curso["curso"] }}</li>
   </ul>
 
-  <a href="{{ route('cursos.edit', $id) }}">Editar curso</a>
+  <a href="{{ route('cursos.edit', $curso['id']) }}">Editar curso</a>
 @endsection

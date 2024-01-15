@@ -19,5 +19,4 @@ Route::get('/', function () {
     return view('inicio')->with('nombre', $nombre);
 })->name('inicio');
 
-Route::resource('cursos', CursoController::class)
-->only(['index', 'show', 'create', 'edit']);
+Route::resource('cursos', CursoController::class);

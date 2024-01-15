@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Curso;
 
 class CursoController extends Controller
 {
@@ -13,16 +14,7 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = array(
-            array("nombre" => "Desarrollo de Aplicaciones Web",
-            "curso" => "1º y 2º"),
-            array("nombre" => "Desarrollo de Aplicaciones Multiplataforma",
-            "curso" => "1º y 2º"),
-            array("nombre" => "Administración de Sistemas Informáticos en Red",
-            "curso" => "1º y 2º"),
-            array("nombre" => "Estética Integral y Bienestar",
-            "curso" => "1º y 2º")
-        );
+        $cursos = Curso::get();
         return view('cursos.index', compact('cursos'));
            
     }
@@ -57,18 +49,7 @@ class CursoController extends Controller
      */
     public function show($id)
     {
-        $cursos = array(
-            array("nombre" => "Desarrollo de Aplicaciones Web",
-            "curso" => "1º y 2º"),
-            array("nombre" => "Desarrollo de Aplicaciones Multiplataforma",
-            "curso" => "1º y 2º"),
-            array("nombre" => "Administración de Sistemas Informáticos en Red",
-            "curso" => "1º y 2º"),
-            array("nombre" => "Estética Integral y Bienestar",
-            "curso" => "1º y 2º")
-        );
-
-        $curso = $cursos[$id];
+        $curso = Curso::find($id);
         return view('cursos.show', compact('curso', 'id'));
     }
 
@@ -104,6 +85,8 @@ class CursoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Curso::find($id)->delete();
+        $cursos = Curso::get();
+        return view('cursos.index', compact('cursos'));
     }
 }
