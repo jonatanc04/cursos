@@ -11,6 +11,8 @@
     <div class="fecha">
       <p>{{fechaActual('d D F \of o')}}</p>
     </div>
-    @yield('contenido')
+    <div class="container">
+      @yield('contenido')
+    </div>
   </body>
 </html>

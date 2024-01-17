@@ -12036,3 +12036,7 @@ nav a:hover {
   align-items: center;
   justify-content: center;
 }
+
+.container {
+  margin-left: 50px;
+}

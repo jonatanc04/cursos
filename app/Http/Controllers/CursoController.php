@@ -66,8 +66,9 @@ class CursoController extends Controller
      */
     public function edit($id)
     {
+        $curso = Curso::find($id);
         $mensaje = "Formulario de edición de cursos";
-        return view('cursos.edit', compact('mensaje'));
+        return view('cursos.edit', compact('mensaje', 'curso'));
     }
 
     /**
@@ -79,7 +80,12 @@ class CursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $curso = Curso::find($id);
+        $curso->nombre = $request->get('nombre');
+        $curso->curso = $request->get('curso');
+        $curso->save();
+
+        return redirect()->route('cursos.index');
     }
 
     /**
@@ -91,7 +97,6 @@ class CursoController extends Controller
     public function destroy($id)
     {
         Curso::find($id)->delete();
-        $cursos = Curso::get();
-        return view('cursos.index', compact('cursos'));
+        return redirect()->route('cursos.index');
     }
 }
