@@ -15,7 +15,7 @@ use App\Http\Controllers\CursoController;
 */
 
 Route::get('/', function () {
-    $nombre = "Nacho";
+    $nombre = "Jonatan";
     return view('inicio')->with('nombre', $nombre);
 })->name('inicio');
 
