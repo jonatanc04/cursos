@@ -4,5 +4,9 @@
     &nbsp;&nbsp;
   <a href="{{ route('cursos.index') }}"><p>Listado de cursos</p></a>
     &nbsp;&nbsp;
-  <a href="{{ route('cursos.create') }}"><p>Crear curso</p></a>
+  @if(auth()->check())
+    <a href="{{ route('cursos.create') }}"><p>Crear curso</p></a>
+    &nbsp;&nbsp;
+    <a href="{{ route('logout') }}"><p>Logout</p></a>
+  @endif
 </nav>
