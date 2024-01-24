@@ -10,7 +10,11 @@
         <form action="{{ route('cursos.destroy', $curso['id']) }}" method="POST">
           @method('DELETE')
           @csrf
-          <button>Borrar</button>
+          @if (empty(auth()->user()))
+            <button>Borrar</button>
+          @elseif ((auth()->user()->id === $curso['id_user']) || (auth()->user()->rol === 'admin')) 
+            <button>Borrar</button>
+          @endif
         </form>
       </li>
     @empty

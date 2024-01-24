@@ -8,6 +8,9 @@
     <li>Nombre del curso: {{ $curso["nombre"] }}</li>
     <li>Curso/s: {{ $curso["curso"] }}</li>
   </ul>
-
-  <a href="{{ route('cursos.edit', $curso['id']) }}">Editar curso</a>
+  @if (empty(auth()->user()))
+    <a href="{{ route('cursos.edit', $curso['id']) }}">Editar curso</a>
+  @elseif ((auth()->user()->id == $curso['id_user']) || (auth()->user()->rol === 'admin')) 
+    <a href="{{ route('cursos.edit', $curso['id']) }}">Editar curso</a>
+  @endif
 @endsection

@@ -12,7 +12,7 @@ class CursoController extends Controller
     {
         $this->middleware(
             'auth',
-            ['only' => ['create', 'store', 'edit', 'update', 'destroy']]
+            ['only' => ['index', 'create', 'store']]
         );
     }
     
@@ -50,6 +50,7 @@ class CursoController extends Controller
         $curso = new Curso();
         $curso->nombre = $request->get('nombre');
         $curso->curso = $request->get('curso');
+        $curso->id_user = auth()->user()->id;
         $curso->save();
 
         return redirect()->route('cursos.index');

@@ -18,7 +18,8 @@ class CursoFactory extends Factory
     {
         return [
             'nombre' => "Curso " . $this->faker->numberBetween(1,99),
-            'curso' => "23/24"
+            'curso' => "23/24",
+            'id_user' => "1"
             ];
     }
 }

@@ -17,6 +17,7 @@ class CrearTablaCursos extends Migration
             $table->increments('id')->start_from(1);
             $table->string('nombre');
             $table->string('curso');
+            $table->string('id_user');
             $table->timestamps();
         });
     }

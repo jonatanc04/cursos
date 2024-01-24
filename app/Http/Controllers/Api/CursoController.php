@@ -30,6 +30,7 @@ class CursoController extends Controller
         $curso = new Curso();
         $curso->nombre = $request->nombre;
         $curso->curso = $request->curso;
+        $curso->id_user = 1;
         $curso->save();
         return response()->json($curso, 201);
     }
